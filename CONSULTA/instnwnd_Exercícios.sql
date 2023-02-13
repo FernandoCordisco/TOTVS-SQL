@@ -31,3 +31,17 @@ ON od.OrderID = o.OrderID
 GROUP BY FORMAT(o.OrderDate, 'yyyy-MM');
 
 SELECT * FROM [Order Details]
+
+-- FUNÇÃO
+
+CREATE FUNCTION EmpregadoNome (@empregadoId INT)
+RETURNS TABLE 
+RETURN (
+	SELECT  FirstName, LastName, HomePhone
+	FROM Employees
+	WHERE EmployeeID = @empregadoId
+	);
+
+SELECT * FROM EmpregadoNome(5)
+
+
